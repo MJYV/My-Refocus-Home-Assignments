@@ -1,30 +1,23 @@
-function bmi(weight, height) {
+let BMI = 0;
 
-  let bmi = weight / (height ** 2)
-
-  let c = "Normal"
-
-  switch (true) {
-    case bmi <= 18.5:
-      c = "Underweight";
-      break;
-
-    case bmi <= 25.0:
-      c = "Normal";
-      break;
-
-    case bmi <= 30.0:
-    
-      c = "Overweight";
-      break;
-
-    default:
-      c = "Obese"
-
+let bmiInt = "";
+function calculateBMI(weightInKG, heightInMtr){
+  BMI = weightInKG / (heightInMtr * heightInMtr)
+  bmiInt = "";
+  if (BMI < 18.5){
+      bmiInt = "Underweight";
+  } else if (BMI > 18.5 && BMI < 28.9){
+      bmiInt = "Healthy";
+  } else if (BMI > 25 && BMI < 29.9){
+      bmiInt = "Overweight"
+  } else if (BMI > 30){
+      bmiInt = "Obese";
+  } else{
+    return console.log("incorrect value!");
   }
-  return c;
+  return console.log(`Basing on you're weight, ${weightInKG}Kg, and height, ${heightInMtr}m.\n${bmiInt} with a BMI of ${BMI.toFixed(2)}`)
 }
 
-console.log(bmi(8, 1.80))
-console.log(bmi(80, 1.80))
-console.log(bmi(800, 1.80))
+calculateBMI(55, 1.60)
+
+module.exports = {BMI, bmiInt};
